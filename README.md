@@ -38,10 +38,11 @@ echo $query;
 ```
 
 # Supported Games
-Below is a list of games that are currently supported by this package. Please ensure you are using the correct game type when querying a server, for Minecraft this is `mc`.
-```
-Minecraft: "mc"
-```
+Below is a list of games that are currently supported by this package. You can use the `gameType` method to specify which game you want to query.
+
+| Game                     | gameType Query Identifier |
+|--------------------------|---------------------------|
+| Minecraft (Java Edition) | mc                        |
 
 ## Testing
 
