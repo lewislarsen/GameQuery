@@ -39,7 +39,7 @@ class Minecraft extends BaseGame
             'port' => $this->defaultPort,
             'query_port' => $this->queryPort,
             'join_link' => $this->joinLink . $this->ipAddress . ':' . $this->defaultPort,
-            'name' => trim($this->query()['motd']['clean'][0] ?? null) ?? null,
+            'name' => trim($this->query()['motd']['clean'][0]),
             'icon' => $this->query()['icon'] ?? null,
             'online_player_count' => $this->query()['players']['online'] ?? 0,
             'max_player_count' => $this->query()['players']['max'] ?? 0,
