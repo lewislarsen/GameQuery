@@ -1,19 +1,20 @@
-# A small package for getting game server data.
+# GameQuery - A small Laravel package to query game servers.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lewislarsen/gamequery.svg?style=flat-square)](https://packagist.org/packages/lewislarsen/gamequery)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/lewislarsen/gamequery/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/lewislarsen/gamequery/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/lewislarsen/gamequery/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/lewislarsen/gamequery/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/lewislarsen/gamequery.svg?style=flat-square)](https://packagist.org/packages/lewislarsen/gamequery)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+GameQuery is a small package for Laravel that allows you to query game servers for information. It currently supports
+the following games:
 
-## Support us
+- Minecraft (Java Edition)
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/GameQuery.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/GameQuery)
+In the future I plan to add support for Source games such as Counter-Strike: Global Offensive and Team Fortress 2.
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+This package will not work with games that do not have self-hosted servers such as Overwatch for example.
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+As this package is still in development, it is likely to change significantly in the future. Please excuse any bugs, they will be addressed.
 
 ## Installation
 
@@ -23,37 +24,17 @@ You can install the package via composer:
 composer require lewislarsen/gamequery
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="gamequery-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="gamequery-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="gamequery-views"
-```
-
 ## Usage
 
 ```php
-$gameQuery = new Lewislarsen\GameQuery();
-echo $gameQuery->echoPhrase('Hello, Lewislarsen!');
+use Lewislarsen\GameQuery\Facades\GameQuery;
+
+$query = GameQuery::gameType('mc')
+->ipAddress('localhost')
+->port(25565)
+->retrieve();
+
+echo $query;
 ```
 
 ## Testing
