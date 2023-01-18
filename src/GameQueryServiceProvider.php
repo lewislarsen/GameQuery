@@ -4,7 +4,6 @@ namespace Lewislarsen\GameQuery;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Lewislarsen\GameQuery\Commands\GameQueryCommand;
 
 class GameQueryServiceProvider extends PackageServiceProvider
 {
@@ -16,10 +15,13 @@ class GameQueryServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('gamequery')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_gamequery_table')
-            ->hasCommand(GameQueryCommand::class);
+            ->name('gamequery');
+    }
+
+    public function packageRegistered(): void
+    {
+        $this->app->bind('gamequery', function () {
+            return new GameQuery();
+        });
     }
 }
