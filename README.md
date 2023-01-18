@@ -37,6 +37,12 @@ $query = GameQuery::gameType('mc')
 echo $query;
 ```
 
+# Supported Games
+Below is a list of games that are currently supported by this package. Please ensure you are using the correct game type when querying a server, for Minecraft this is `mc`.
+```
+Minecraft: "mc"
+```
+
 ## Testing
 
 ```bash
